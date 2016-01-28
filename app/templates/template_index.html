@@ -1,0 +1,36 @@
+<!doctype html>
+{#In this file all variables inside {{}} will be #}
+{#	replaced by Jinja2 template engine with actual data #}
+
+{% extends 'base.html' %}
+{% block title %}Login {{super()}} {% endblock %}
+{% block head %}
+	{{super()}} {# ota kaikki koodi tähän, mitä headiin määritelty #}
+	<style>
+		.my_container{
+			
+			width: 500px;
+			margin: 30px auto;
+			padding: 8px;
+			border: 2px	solid gray;
+			border-radius: 5px;
+		}
+	</style>
+{% endblock %}
+{% block navbar %}{{super()}}{% endblock %}
+{% block body %}
+	{# call super() if you want to include code from base.html template #}
+	{{super()}}
+	<div class="my_container">
+		<form action="/login" method="POST">
+			{{ form.csrf_token }}
+			{{ form.email.label }}
+			{{ form.email(class='form-control', id='email') }}
+			
+			{{ form.passw.label }}
+			{{ form.passw(class='form-control') }}
+			
+			{{form.submit(class='btn btn-default')}}
+		</form>
+	</div>
+{% endblock %}
