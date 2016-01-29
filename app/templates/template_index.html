@@ -22,11 +22,10 @@
 	{# call super() if you want to include code from base.html template #}
 	{{super()}}
 	<div class="my_container">
-		<form action="/login" method="POST">
-			{{ form.csrf_token }}
+		<form action="/" method="POST">
+			{{ form.csrf_token }} {# pakollinen pythonissa, suojaa csrf hyökkäyksiltä #}
 			{{ form.email.label }}
-			{{ form.email(class='form-control', id='email') }}
-			
+			{{ form.email(class='form-control', id='email') }} {# määritellään tyylit #}
 			{{ form.passw.label }}
 			{{ form.passw(class='form-control') }}
 			
