@@ -11,4 +11,10 @@ class RegisterForm(Form):
 	email = StringField('Enter your email',validators=[Required(),Email()])
 	passw = PasswordField('Enter password', validators=[Required()])
 	submit = SubmitField('Login')
+    
+class FriendsForm(Form):
+    name = StringField('Name:', validators=[Required()])
+    address = StringField('Address:', validators=[Required()])
+    age = StringField('Age:', validators=[Required()])
+    submit = SubmitField('Save')
 	
