@@ -1,4 +1,3 @@
-<!doctype html>
 {#In this file all variables inside {{}} will be #}
 {#	replaced by Jinja2 template engine with actual data #}
 
@@ -6,16 +5,7 @@
 {% block title %}Login {{super()}} {% endblock %}
 {% block head %}
 	{{super()}} {# ota kaikki koodi tähän, mitä headiin määritelty #}
-	<style>
-		.my_container{
-			
-			width: 500px;
-			margin: 30px auto;
-			padding: 8px;
-			border: 2px	solid gray;
-			border-radius: 5px;
-		}
-	</style>
+
 {% endblock %}
 {% block navbar %}{{super()}}{% endblock %}
 {% block body %}

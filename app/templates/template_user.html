@@ -1,3 +1,35 @@
-{% extends "bootstrap/base.html" %}
+{#In this file all variables inside {{}} will be #}
+{#	replaced by Jinja2 template engine with actual data #}
 
-<h2>Hello {{name}}</h2>
+{% extends 'base.html' %}
+{% block title %}Login {{super()}} {% endblock %}
+{% block head %}
+	{{super()}} {# ota kaikki koodi tähän, mitä headiin määritelty #}
+
+{% endblock %}
+{% block navbar %}{{super()}}{% endblock %}
+{% block body %}
+	{# call super() if you want to include code from base.html template #}
+	{{super()}}
+	<div class="my_container">
+		<h1>Here will be table of your friends</h1>	
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in friends %}
+					<tr>
+						<td>{{item.name}}</td>
+						<td>{{item.address}}</td>
+						<td>{{item.age}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

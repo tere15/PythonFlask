@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form 
-from wtforms import StringField,PasswordField,SubmitField 
-from wtforms.validators import Required,Email
+from wtforms import StringField,PasswordField,SubmitField,IntegerField
+from wtforms.validators import Required,Email,NumberRange
 
 class LoginForm(Form): # LoginForm perii Formin eli esim <input type="text"/>, <input type="submit"/> #
 	email = StringField('Enter your email',validators=[Required(),Email()])
@@ -12,9 +12,9 @@ class RegisterForm(Form):
 	passw = PasswordField('Enter password', validators=[Required()])
 	submit = SubmitField('Login')
     
-class FriendsForm(Form):
-    name = StringField('Name:', validators=[Required()])
-    address = StringField('Address:', validators=[Required()])
-    age = StringField('Age:', validators=[Required()])
+class FriendForm(Form):
+    name = StringField('Enter your friend\'s name:', validators=[Required()])
+    address = StringField('Enter your friend\'s address:', validators=[Required()])
+    age = IntegerField('Enter your friend\'s age:', validators=[Required(),NumberRange(min=0,max=150,message="Enter value between 0-115")])
     submit = SubmitField('Save')
 	

@@ -5,10 +5,12 @@ class Users(db.Model):
 	id= db.Column(db.Integer,primary_key=True)
 	email = db.Column(db.String(128),unique=True)
 	passw = db.Column(db.String(128))
-	
+	friends = db.relationship('Friends',backref='user',lazy='dynamic') #2 tapa
 	def __init__(self,email,passw):
 		self.email = email
 		self.passw = passw
+	def __str__(self):
+		return self.email + ' ' + self.passw + ' ' + str(self.id)
 
 class Friends(db.Model): 
 	id = db.Column(db.Integer, primary_key = True)
@@ -22,3 +24,6 @@ class Friends(db.Model):
 		self.address = address
 		self.age = age
 		self.user_id = user_id
+	def __str__(self):
+		text = "This is friends object"
+		return text
